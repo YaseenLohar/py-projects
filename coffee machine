@@ -1,0 +1,154 @@
+# This code replicates the functioning of a typical coffee machine
+
+MENU = {
+    "espresso" : {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost":1.5,
+    },
+    "latte" : {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+    "money": 0,
+}
+
+def coffee_please():
+    while True:
+        # TODO 1. prompt the user
+        choice = input("what would you like? (espresso/latte/cappuccino):")
+
+        # TODO 2. secret maintenance turnoff
+        if choice == "off":
+            print("Thank you, the machine is turning off now!")
+            break
+
+        # TODO 3. print report
+        if choice == "report":
+            for x in resources:
+                print(x,":", resources[x])
+            print( "Water and milk are measured in ml , coffee is measured in gms")
+
+
+        # TODO 4. check if resources are sufficient
+        if choice == "espresso":
+            if resources["water"] < MENU["espresso"]["ingredients"]["water"]:
+                print("sorry theres not enough water !")
+                break
+            if resources["coffee"] < MENU["espresso"]["ingredients"]["coffee"]:
+                print("sorry theres not enough coffee !")
+                break
+
+        if choice == "latte":
+            if resources["water"]< MENU["latte"]["ingredients"]["water"]:
+                print("sorry theres not enough water !")
+                break
+            if resources["milk"] < MENU["latte"]["ingredients"]["milk"]:
+                print("sorry theres not enough milk !")
+                break
+            if resources["coffee"] < MENU["latte"]["ingredients"]["coffee"]:
+                print("sorry theres not enough coffee !")
+                break
+
+        if choice == "cappuccino":
+            if resources["water"]< MENU["cappuccino"]["ingredients"]["water"]:
+                print("sorry theres not enough water !")
+                break
+            if resources["milk"] < MENU["cappuccino"]["ingredients"]["milk"]:
+                print("sorry theres not enough milk !")
+                break
+            if resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
+                print("sorry theres not enough coffee !")
+                break
+
+        # TODO 5. Process the coins
+        if choice == "cappuccino" or choice == "latte" or choice == "espresso":
+            penny = int(input("how many pennies?"))
+            nickle = int(input("how many nickles?"))
+            dime = int(input("how many dimes?"))
+            quarter = int(input("how many quarters?"))
+            total = (penny*0.01) + (nickle*0.05) + (dime*0.1) + (quarter*0.25)
+            resources["money"] += total
+
+
+
+        # TODO 6. check for a successful transaction
+
+        if choice == "espresso" and (total < MENU["espresso"]["cost"]):
+            print("sorry that's not enough money. Money refunded")
+            resources["money"] -= total
+            break
+
+        if choice == "latte" and (total < MENU["latte"]["cost"]):
+            print("sorry that's not enough money. Money refunded")
+            resources["money"] -= total
+            break
+
+        if choice == "cappuccino" and (total < MENU["cappuccino"]["cost"]):
+            print("sorry that's not enough money. Money refunded")
+            resources["money"] -= total
+            break
+
+        elif choice == "espresso" and (total > MENU["espresso"]["cost"]):
+            print("extra change has been dispensed.")
+            extra = total - MENU["espresso"]["cost"]
+            resources["money"] -= extra
+            print(f"here's {round(extra,2)} dollars in change.")
+
+        elif choice == "latte" and (total > MENU["latte"]["cost"]):
+            print("extra change has been dispensed.")
+            extra = total - MENU["latte"]["cost"]
+            resources["money"] -= extra
+            print(f"here's {round(extra,2)} dollars in change.")
+
+        elif choice == "cappuccino" and (total > MENU["cappuccino"]["cost"]):
+            print("extra change has been dispensed.")
+            extra = total - MENU["cappuccino"]["cost"]
+            resources["money"] -= extra
+            print(f"here's {round(extra,2)} dollars in change.")
+
+
+        # TODO 7. Make the coffee!
+
+        if choice == "espresso":
+            resources["water"] -= MENU["espresso"]["ingredients"]["water"]
+            resources["coffee"] -= MENU["espresso"]["ingredients"]["coffee"]
+
+        if choice == "latte":
+            resources["water"] -= MENU["latte"]["ingredients"]["water"]
+            resources["milk"] -= MENU["latte"]["ingredients"]["milk"]
+            resources["coffee"] -= MENU["latte"]["ingredients"]["coffee"]
+
+        if choice == "cappuccino":
+            resources["water"] -= MENU["cappuccino"]["ingredients"]["water"]
+            resources["milk"] -= MENU["cappuccino"]["ingredients"]["milk"]
+            resources["coffee"] -= MENU["cappuccino"]["ingredients"]["coffee"]
+
+        if choice == "cappuccino" or choice == "latte" or choice == "espresso":
+            print(f"Here's your {choice}, enjoy!")
+
+
+
+coffee_please()
