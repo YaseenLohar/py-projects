@@ -1,0 +1,40 @@
+# THIS CODE CREATES AN ETCH A SKETCH CANVAS USING THE TURTLE GRAPHICS MIDULE, WHICH CAN BE USED TO DRAW OBJECTS WITH THE W,A,S,D KEYS
+
+
+
+import turtle
+from turtle import Turtle, Screen
+
+tutu = Turtle()
+screen = Screen()
+
+
+def forward():
+    tutu.forward(10)
+
+def backward():
+    tutu.backward(10)
+
+def right():
+    tutu.right(10)
+
+def left():
+    tutu.left(10)
+
+def clear():
+    tutu.up()
+    tutu.home()
+    tutu.down()
+    screen.resetscreen()    
+
+
+def etch_a_sketch():
+    turtle.onkeypress(fun = forward, key ='w')
+    turtle.onkeypress(fun = backward, key ='s')
+    turtle.onkeypress(fun = right, key ='d')
+    turtle.onkeypress(fun = left, key ='a')
+    turtle.onkeypress(fun = clear, key ='c')
+    turtle.listen()
+    screen.exitonclick()
+
+etch_a_sketch()
