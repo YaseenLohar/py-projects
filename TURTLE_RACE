@@ -1,0 +1,51 @@
+# THIS CODE IS FOR A TURTLE RACE USING THE TURTLE GRAPHICS MODULE
+
+from turtle import Turtle, Screen
+import random
+names=["tutu", "tim", "sena", "john","kenny","rosy"]
+colors = ["red", "green", "blue", "yellow","black","purple"]
+is_race_on = False
+screen = Screen()
+screen.setup(height = 500, width = 500)
+user_choice = screen.textinput(title = "choose your champion", prompt = "choose which turtle you think will win : ")
+user_choice=user_choice.lower()
+
+#THIS WILL TRIGGER THE RACE AFTER THE PROMPT ONLY
+if user_choice:
+    is_race_on = True
+
+#CREATE MULTIPLE TURTLE OBJECTS USING A FOR LOOP
+i=0
+obs=[]
+for x in names:
+    x = Turtle()
+    x.shape("turtle")
+    x.color(colors[i])
+    obs.append(x)
+    i += 1
+
+#SET THEIR STARTING POSITIONS
+y = list(range(-120,120,40))
+k=0
+for x in obs:
+    x.penup()
+    x.speed(2)
+    x.goto(-230,y[k])
+    k += 1
+
+# TO BEGIN THE RACE
+while is_race_on:
+    for x in obs:
+        if x.xcor() > 230 and x.pencolor == user_choice:
+            print("You Win!",f"your turtle {x.pencolor()} wins the race")
+            is_race_on = False
+
+        elif x.xcor() > 230 and x.pencolor != user_choice:
+            print("You Lose!", f"{x.pencolor()} wins the race")
+            is_race_on = False
+    for x in obs:
+        x.forward(random.randint(0,10))
+
+
+
+screen.exitonclick()
