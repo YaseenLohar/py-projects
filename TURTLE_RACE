@@ -41,17 +41,25 @@ for x in obs:
     k += 1
 
 # TO BEGIN THE RACE
+# IMPLEMENT A PSUEDO PARALLELISM FOR FAIRNESS IN THE RACE, MOVE THEM FORWARD FIRST, THEN CHECK POSITIONS !
+winners = []
 while is_race_on:
+    for x in obs:
+        x.forward(random.randint(0,10))
     for x in obs:
         if x.xcor() > 230 and x.pencolor() == user_choice:
             print("You Win!",f"your turtle {x.pencolor()} wins the race!!")
+            winners.append(x)
             is_race_on = False
 
         elif x.xcor() > 230 and x.pencolor() != user_choice:
             print("You Lose!", f"{x.pencolor()} wins the race!!")
+            winners.append(x)
             is_race_on = False
-    for x in obs:
-        x.forward(random.randint(0,10))
+
+    if len(winners)>1:
+        print(f"Its a DRAW !!! The winners are {winners}!!!")
+
 
 
 
