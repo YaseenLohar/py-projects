@@ -13,7 +13,7 @@
 4. Make sure Python is installed (comes with `turtle` on most versions)
 
 ### Option 2: Run on Windows (no Python needed)
-- Download the `.exe` from the [Releases](https://github.com/yourusername/yourrepo/releases) section
+- Download the `.exe` from the [Releases](https://github.com/YaseenLohar/py-projects/releases/download/v1.0/PONG_GAME.exe) section
 - **Note:** You may need to **temporarily disable antivirus** — there's **no virus**, it's just flagged because it's packaged using PyInstaller
 
 ---
