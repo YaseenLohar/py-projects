@@ -30,9 +30,8 @@ A basic **Snake Game** implementation using **Python** and **Turtle graphics**, 
 
 ## 🛠️ How to Run
 
-1. **Clone this repo**  
-   ```bash
-   git clone https://github.com/yourusername/snake-game.git
+1. USE LINK:
+   https://github.com/YaseenLohar/py-projects/tree/558676186d81553527da75d92b75b2e4d90f148c/SNAKE_GAME
    cd snake-game
 
 *NOTE : DISABLE ANTIVIRUS TO PLAY(GAME HAS NO VIRUS, ANTIVIRUS BLOCKS PYINSTALLER .EXE FILES)
