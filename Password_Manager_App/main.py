@@ -1,8 +1,19 @@
 from tkinter import *
 from tkinter import messagebox
 import pyperclip
+import os, sys
 p1=None
 p2=None
+
+# ----------------------------IMAGE PATH FOR .EXE-------------------------------- #
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and PyInstaller"""
+    try:
+        base_path = sys._MEIPASS  # type: ignore[attr-defined]
+    except AttributeError:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
     if len(input3.get())!=0 or len(input4.get())!=0:
@@ -100,7 +111,7 @@ window= Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50)
 
-logo = PhotoImage(file="logo.png")
+logo = PhotoImage(file=resource_path("logo.png"))
 canvas = Canvas(window, width=200, height=200)
 canvas.create_image(100, 100, image=logo)
 canvas.grid(row=0, column=1)

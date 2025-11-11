@@ -22,7 +22,7 @@ SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
 timer=None
-# ---------------------------- TIMER RESET ------------------------------- # 
+# ---------------------------- TIMER RESET ------------------------------- #
 def reset_mechanism():
     window.after_cancel(timer)
     canvas.itemconfig(timer_text,text = f"{00}:{00}")
@@ -30,7 +30,7 @@ def reset_mechanism():
     label2.config(text = "")
     global reps
     reps = 0
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+# ---------------------------- TIMER MECHANISM ------------------------------- #
 def start_timer():
    global reps
    reps += 1
@@ -91,7 +91,6 @@ label2 = Label(window, text = "",font = ("Ariel",15,"bold"))
 label2.grid(column=1, row=3)
 label2.config(bg=YELLOW,fg=GREEN)
 
-button=PhotoImage(file="button.png")
 button_start = Button(window, text = "Start", font = ("Ariel",10,"normal"),highlightthickness =0,command = start_timer)
 button_start.grid(column=0, row = 2)
 
